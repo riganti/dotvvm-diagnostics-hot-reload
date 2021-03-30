@@ -1,6 +1,8 @@
-﻿using DotVVM.Framework.Configuration;
+﻿using DotVVM.Framework.Compilation;
+using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Hosting;
 using DotVVM.Framework.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -39,13 +41,13 @@ namespace Dotvvm.ViewHotReload
                 watcher.Path = Path.GetDirectoryName(fullPath);
                 watcher.Filter = Path.GetFileName(fullPath);
                 watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
-                watcher.Changed += (s, a) => OnFileChanged(path);
+                watcher.Changed += (s, a) => OnFileChanged(configuration, path);
                 watcher.Renamed += (s, a) =>
                 {
                     // VS doesn't update the actual file, it writes in the temp file, moves the old file away, and then renames the temp file to the original file
                     if (string.Equals(a.Name, watcher.Filter, Environment.OSVersion.Platform == PlatformID.Win32NT ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
                     {
-                        OnFileChanged(path);
+                        OnFileChanged(configuration, path);
                     }
                 };
                 watcher.EnableRaisingEvents = true;
@@ -56,8 +58,17 @@ namespace Dotvvm.ViewHotReload
             return markupFile;
         }
 
-        private void OnFileChanged(string virtualPath)
+        private void OnFileChanged(DotvvmConfiguration configuration, string virtualPath)
         {
+            // recompile view on the background so the refresh is faster
+            Task.Factory.StartNew(() =>
+            {
+                // cannot use DI - there is cyclic dependency
+                var controlBuilderFactory = configuration.ServiceProvider.GetRequiredService<IControlBuilderFactory>();
+                controlBuilderFactory.GetControlBuilder(virtualPath);
+            });
+
+            // notify about the changes
             lock (notifierTaskLocker)
             {
                 notifierTaskDirtyFiles.Add(virtualPath);

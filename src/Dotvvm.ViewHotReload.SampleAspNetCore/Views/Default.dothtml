@@ -3,10 +3,8 @@
 <dot:Content ContentPlaceHolderID="MainContent">
 
 	<div class="content">
+        <h2>{{value: Title}}</h2>
 
-        <h1>{{value: Title}}</h1>
-
-        <p><dot:TextBox Text="{value: Title}" /></p>
-        
+        <dot:TextBox Text="{value: Title}" />
     </div>
 </dot:Content>

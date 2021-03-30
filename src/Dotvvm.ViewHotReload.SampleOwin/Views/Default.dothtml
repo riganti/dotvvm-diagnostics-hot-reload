@@ -6,7 +6,5 @@
         <h1>{{value: Title}}</h1>
         
         <p><dot:TextBox Text="{value: Title}" /></p> 
-		
-		<p>This is my new line.</p>
     </div>
 </dot:Content>
