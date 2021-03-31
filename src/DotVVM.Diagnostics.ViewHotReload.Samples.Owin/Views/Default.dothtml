@@ -1,0 +1,10 @@
+﻿@viewModel DotVVM.Diagnostics.ViewHotReload.Samples.Owin.ViewModels.DefaultViewModel, DotVVM.Diagnostics.ViewHotReload.Samples.Owin
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+	<div class="content">
+        <h1>{{value: Title}}</h1>
+        
+        <p><dot:TextBox Text="{value: Title}" /></p> 
+    </div>
+</dot:Content>

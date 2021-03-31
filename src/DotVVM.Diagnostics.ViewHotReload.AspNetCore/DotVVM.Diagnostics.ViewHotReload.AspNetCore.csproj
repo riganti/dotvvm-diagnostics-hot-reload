@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\dotvvm.viewhotreload.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\dotvvm.viewhotreload.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotVVM.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotVVM.Diagnostics.ViewHotReload\DotVVM.Diagnostics.ViewHotReload.csproj" />
+  </ItemGroup>
+
+</Project>
