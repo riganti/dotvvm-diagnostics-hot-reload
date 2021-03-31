@@ -12,6 +12,5 @@
 
 
     <dot:ContentPlaceHolder ID="MainContent" />
-    <dot:RequiredResource Name="dotvvm-viewhotreload" />
 </body>
 </html>

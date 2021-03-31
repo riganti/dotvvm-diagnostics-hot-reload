@@ -14,8 +14,6 @@ namespace Dotvvm.ViewHotReload.SampleOwin
             ConfigureRoutes(config, applicationPath);
             ConfigureControls(config, applicationPath);
             ConfigureResources(config, applicationPath);
-
-            config.AddViewHotReload();
         }
 
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
