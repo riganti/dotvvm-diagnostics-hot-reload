@@ -1,5 +1,4 @@
 ﻿using DotVVM.Diagnostics.ViewHotReload;
-using DotVVM.Diagnostics.ViewHotReload.Owin.Services;
 using DotVVM.Framework.Hosting;
 using DotVVM.Framework.ResourceManagement;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotVVM.Diagnostics.ViewHotReload.AspNetCore.Services;
 
 namespace DotVVM.Framework.Configuration
 {

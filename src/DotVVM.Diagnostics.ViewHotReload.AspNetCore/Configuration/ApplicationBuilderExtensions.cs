@@ -20,5 +20,10 @@ namespace Microsoft.Extensions.DependencyInjection
             app.MapHub<DotvvmViewHotReloadHub>("/_diagnostics/dotvvmViewHotReloadHub");
         }
 
+        public static void MapDotvvmViewHotReload(this IEndpointRouteBuilder app)
+        {
+            app.MapHub<DotvvmViewHotReloadHub>("/_diagnostics/dotvvmViewHotReloadHub");
+        }
+
     }
 }

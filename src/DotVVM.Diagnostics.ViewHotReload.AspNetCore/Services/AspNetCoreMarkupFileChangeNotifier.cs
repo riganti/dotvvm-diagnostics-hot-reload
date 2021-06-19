@@ -1,8 +1,8 @@
-﻿using DotVVM.Diagnostics.ViewHotReload.AspNetCore.Hubs;
+﻿using System.Collections.Generic;
+using DotVVM.Diagnostics.ViewHotReload.AspNetCore.Hubs;
 using Microsoft.AspNetCore.SignalR;
-using System.Collections.Generic;
 
-namespace DotVVM.Diagnostics.ViewHotReload.Owin.Services
+namespace DotVVM.Diagnostics.ViewHotReload.AspNetCore.Services
 {
     public class AspNetCoreMarkupFileChangeNotifier : IMarkupFileChangeNotifier
     {

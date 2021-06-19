@@ -4,25 +4,21 @@
     var lastState = window.sessionStorage.getItem("dotvvmViewHotReloadState");
     window.sessionStorage.removeItem("dotvvmViewHotReloadState");
     if (lastState) {
-        dotvvm.serialization.deserialize(JSON.parse(lastState), dotvvm.viewModels.root.viewModel, true);
+        dotvvm.patchState(JSON.parse(lastState));
     }
 
     // listen for markup file changes
     var hub = $.connection.dotvvmViewHotReloadHub;
     hub.client.fileChanged = function (paths) {
 
-        // serialize viewmodel
-        var vm = dotvvm.viewModels.root.viewModel;
-        var serialized = dotvvm.serialization.serialize(vm, { serializeAll: true });
-
         // store it in session storage
-        window.sessionStorage.setItem("dotvvmViewHotReloadState", JSON.stringify(serialized));
+        window.sessionStorage.setItem("dotvvmViewHotReloadState", JSON.stringify(dotvvm.state));
 
         // reload
         window.location.reload();
     };
     $.connection.hub.start().
-        done(function () { console.log('DotVVM view hot reload active, connection ID=' + $.connection.hub.id); }).
-        fail(function () { console.warn('DotVVM view hot reload error!'); });
+        done(function (e) { dotvvm.log.logInfo('DotVVM view hot reload active.', e); }).
+        fail(function (e) { dotvvm.log.logWarning('DotVVM view hot reload error!', e); });
 
 });

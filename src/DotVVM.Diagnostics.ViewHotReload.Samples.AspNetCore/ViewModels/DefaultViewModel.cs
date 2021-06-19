@@ -11,11 +11,20 @@ namespace DotVVM.Diagnostics.ViewHotReload.Samples.AspNetCore.ViewModels
 {
     public class DefaultViewModel : MasterPageViewModel
     {
-		public string Title { get; set;}
+		public string Title { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
 		public DefaultViewModel()
 		{
 			Title = "Hello from DotVVM!";
 		}
+
+        public void ChangeTitle()
+        {
+            Title = $"This is {FirstName} {LastName}!";
+        }
     }
 }
