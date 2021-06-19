@@ -5,6 +5,17 @@
 	<div class="content">
         <h2>{{value: Title}}</h2>
 
-        <dot:TextBox Text="{value: Title}" />
+        <p>
+            First name:     
+            <dot:TextBox Text="{value: FirstName}" />
+        </p>
+
+        <p>
+            Last name:     
+            <dot:TextBox Text="{value: LastName}" />
+        </p>
+
+        <dot:Button Text="Send greetings" 
+                    Click="{command: ChangeTitle()}" />
     </div>
 </dot:Content>
