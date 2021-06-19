@@ -5,7 +5,7 @@
 	<AssemblyTitle>DotVVM.Diagnostics.ViewHotReload.Owin</AssemblyTitle>
     <AssemblyName>DotVVM.Diagnostics.ViewHotReload.Owin</AssemblyName>
     <PackageId>DotVVM.Diagnostics.ViewHotReload.Owin</PackageId>
-    <PackageVersion>3.1.0</PackageVersion>
+    <PackageVersion>3.1.0-preview01-final</PackageVersion>
     <Authors>RIGANTI</Authors>
     <Description>Hot reload support for DotVVM pages and changes in markup</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
