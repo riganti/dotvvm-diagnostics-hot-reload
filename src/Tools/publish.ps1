@@ -146,6 +146,6 @@ RestoreSignClient;
 GitCheckout;
 SetVersion;
 BuildPackages;
-#SignPackages;
+SignPackages;
 PushPackages;
 GitPush;
